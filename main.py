@@ -65,20 +65,26 @@ if(sent_language == 'English') :
 if(sum_language == 'French') :
     st.title("Résumé de text français")
     user_text = st.text_area("Saisissez votre text ici")
-    resume_text_btn = st.button("model fait maison")
-    textRankSummarizer_btn = st.button("model textRankSummarizer")
-    lexRankSummarizer_btn = st.button("model lexRankSummarizer")
-    lsaSummarizer_btn = st.button("model lsaSummarizer")
+    summary_size_input = st.text_input("Saisissez le nombre de paragraphes")
+    col1, col2, col3, col4 = st.columns(4)
+    resume_text_btn = col1.button("fait maison")
+    textRankSummarizer_btn = col2.button("textRank")
+    lexRankSummarizer_btn = col3.button("lexRank")
+    lsaSummarizer_btn = col4.button("lsa")
     summary_size = 5
     summary = ""
     
     if(resume_text_btn):
+        summary_size = int(summary_size_input)
         summary = resume_text(user_text, resume_size = summary_size, language = sum_language.lower())
     elif(textRankSummarizer_btn):
+        summary_size = int(summary_size_input)
         summary = with_textRankSummarizer(user_text, resume_size = summary_size, language = sum_language.lower())
     elif(lexRankSummarizer_btn):
+        summary_size = int(summary_size_input)
         summary = with_lexRankSummarizer(user_text, resume_size = summary_size, language = sum_language.lower())
-    else:
+    elif(lsaSummarizer_btn):
+        summary_size = int(summary_size_input)
         summary = with_lsaSummarizer(user_text, resume_size = summary_size, language = sum_language.lower())
     
     st.write(summary)
@@ -86,20 +92,26 @@ if(sum_language == 'French') :
 if(sum_language == 'English') :
     st.title("English text summarizer")
     user_text = st.text_area("Write your text here")
-    resume_text_btn = st.button("model from scratch")
-    textRankSummarizer_btn = st.button("textRankSummarizer model")
-    lexRankSummarizer_btn = st.button("lexRankSummarizer model")
-    lsaSummarizer_btn = st.button("lsaSummarizer model")
+    summary_size_input = st.text_input("Saisissez le nombre de paragraphes")
+    col1, col2, col3, col4 = st.columns(4)
+    resume_text_btn = col1.button("from scratch")
+    textRankSummarizer_btn = col2.button("textRank")
+    lexRankSummarizer_btn = col3.button("lexRank")
+    lsaSummarizer_btn = col4.button("lsa")
     summary_size = 5
     summary = ""
     
     if(resume_text_btn):
+        summary_size = int(summary_size_input)
         summary = resume_text(user_text, resume_size = summary_size, language = sum_language.lower())
     elif(textRankSummarizer_btn):
+        summary_size = int(summary_size_input)
         summary = with_textRankSummarizer(user_text, resume_size = summary_size, language = sum_language.lower())
     elif(lexRankSummarizer_btn):
+        summary_size = int(summary_size_input)
         summary = with_lexRankSummarizer(user_text, resume_size = summary_size, language = sum_language.lower())
-    else:
+    elif(lsaSummarizer_btn):
+        summary_size = int(summary_size_input)
         summary = with_lsaSummarizer(user_text, resume_size = summary_size, language = sum_language.lower())
     
     st.write(summary)
