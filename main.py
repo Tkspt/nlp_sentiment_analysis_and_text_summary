@@ -37,7 +37,7 @@ if(sent_language == 'French') :
     
     if(user_text != ""):
         tokenizer = load_tokenizer('french_tokenizer.json')
-        sentence = pad_sequences(tokenizer.texts_to_sequences([user_text]), 25)
+        sentence = pad_sequences(tokenizer.texts_to_sequences([user_text]), 24)
         
         y_pred= french_sentiment_analysis_model.predict(sentence)
         y_pred = np.round(y_pred)
